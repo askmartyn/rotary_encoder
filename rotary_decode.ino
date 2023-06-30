@@ -21,6 +21,7 @@ void setup() {
   pinMode(d7, OUTPUT);
   //LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
   lcd.begin(8,2);
+  lcd.display();
   lcd.clear();
   lcd.print("Hello world");
   pinMode(code8Pin, INPUT);
@@ -57,7 +58,7 @@ void loop() {
 
   //Output the code in hexadecimal 
   Serial.print("Now code8421 is:  ");
-  Serial.println(String(code8421, HEX));
+ Serial.println(String(code8421, HEX));
   switch (code8421) {
     case 0:
      sendToScreen("Hi Everyone");
@@ -92,5 +93,6 @@ void sendToScreen(String message) {
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print(message);  
+  Serial.println(message);
   delay(100);
 }
